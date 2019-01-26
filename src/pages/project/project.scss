@@ -1,0 +1,249 @@
+
+@mixin categories-title-style($color){
+	display: inline-block;
+	width: 100%;
+	text-align: start !important;
+	font-size: 8vw;
+	font-weight: 900;
+	letter-spacing: 0.4px;
+	color: $color;
+	margin: 0px;
+}
+
+
+page-project {
+    button,
+    ion-button,
+    .button-md,
+    .button-ios {
+      text-transform: none !important;
+    }
+    p {
+      color: #444;
+    }
+    // Cover image
+    #profile-bg {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      margin-top: -16px;
+      height: 160px;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      text-align: center;
+    }
+    // Profile content
+    #content {
+      position: relative;
+      margin-top: 150px;
+      padding-top: 200px;
+      text-align: center;
+    }
+    #profile-image {
+      display: block;
+      border-radius: 50%;
+      width: auto;
+      height: 100px;
+      margin: 0 auto 0;
+      box-shadow: 0px 11px 20px -3px rgba(142, 136, 146, 0.75);
+    }
+    #profile-info {
+      position: absolute;
+      top: -95px;
+      width: 100%;
+      z-index: 2;
+      text-align: center;
+    }
+    #profile-name {
+      color: #444;
+      font-size: 26px;
+    }
+    .profile-description {
+      font-size: 15px;
+      color: #888;
+    }
+    .follow-button {
+      text-transform: none;
+      border-radius: 3px !important;
+      ion-icon {
+        font-weight: bold;
+        padding-left: 5px;
+        font-size: 2.5rem;
+      }
+    }
+    // Following, Followers and all..
+    .profile-numbers {
+      p {
+        color: #444;
+        font-size: medium;
+        margin-bottom: 3px;
+      }
+      span {
+        font-weight: bold;
+        font-size: 2.4rem;
+        color: #34354c;
+      }
+    }
+    hr {
+      border: 0;
+      height: 1px;
+      background: #444;
+      background: -webkit-linear-gradient(left, hsla(0, 0%, 0%, 0) 0%, rgb(188, 198, 214) 50%, hsla(0, 0%, 0%, 0) 100%);
+    }
+    // Posts feed
+    #posts {
+      text-align: justify;
+    }
+   
+
+    $categories-heading-image-height: 150px;
+  $categories-grid-padding: 10px;
+  $categories-horizontal-list-padding: 10px;
+
+  .listing-header
+  {
+      .header-logo
+      {
+          width: 34vw;
+      }
+  }
+
+  .listing-content
+  {
+      .image-heading
+      {
+          height: $categories-heading-image-height;
+
+          .bg-overlay
+          {
+              z-index: 1;
+              background-color: rgba($black-c, .6);
+          }
+
+          ion-spinner {
+              z-index: 2;
+          }
+
+          @include spinner-color($white);
+
+          .heading-row
+          {
+              height: 100%;
+              width: 100%;
+              z-index: 3;
+            position: absolute;
+              align-items: center;
+
+              .main-title
+              {
+                  @include categories-title-style($white);
+                  font-size: 10vw;
+              }
+          }
+      }
+
+      .categories-title
+      {
+          font-size: 1.2rem;
+          font-weight: 400;
+          letter-spacing: 0.7px;
+          color: $white-d;
+    margin: 8px 16px 16px;
+    text-align: start;
+      }
+
+      .horizontal-categories
+      {
+          // border-bottom: 10px solid $white-a;
+          @include element-shadow();
+          padding-bottom: 16px;
+
+          .scroll-content
+          {
+              position: relative;
+              contain: style layout;
+          }
+
+          preload-image {
+              border-radius: 50%;
+
+              img	{
+                  border-radius: 50%;
+              }
+          }
+
+          .categories-row
+          {
+              flex-wrap: nowrap;
+
+              &::after{
+                  content: '';
+                  flex: 0 0 $categories-horizontal-list-padding;
+              max-width: $categories-horizontal-list-padding;
+              }
+          }
+
+          .horizontal-item
+          {
+              padding: 0px 0px 0px $categories-horizontal-list-padding;
+          }
+      }
+
+      .grid-categories
+      {
+          padding: 0px ($categories-grid-padding/2);
+          flex-wrap: wrap;
+
+          .category-item
+          {
+              padding: 0px ($categories-grid-padding/2) $categories-grid-padding;
+
+              .category-heading
+              {
+                  padding-bottom: 100%;
+
+                  .bg-overlay
+                  {
+                      z-index: 1;
+                      background-color: rgba($black-c, .6);
+                  }
+
+                  ion-spinner {
+                      z-index: 2;
+                  }
+
+                  @include spinner-color($white);
+
+                  .heading-row
+                  {
+                      height: 100%;
+                      width: 100%;
+                      z-index: 3;
+                    position: absolute;
+                      align-items: center;
+
+                      .category-title
+                      {
+            
+                          @include categories-title-style($white);
+                      }
+                  }
+              }
+          }
+  }
+}
+}
+
+
+.user-content-segment
+{
+    @include segment-button-styles($theme-color-2);
+    margin-bottom: 20px;
+
+    .segment-button
+    {
+        @include segment-text-styles($white-d);
+    }
+}
+

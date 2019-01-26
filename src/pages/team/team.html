@@ -1,0 +1,56 @@
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Team</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+
+<ion-content padding>
+    <div id="profile-bg" [ngStyle]="{'background-image': 'url(' + team.coverImage +')'}"></div>
+    <div id="content">
+      <div id="profile-info" padding>
+        <img id="profile-image" [src]="team.profileImage">
+        <h3 id="profile-name">{{team.name}}</h3>
+        <p>{{team.occupation}} &bull; {{team.location}}</p>
+        <p class="profile-description">{{team.description}}</p>
+      
+      </div>
+      <hr/>
+      <ion-row class="profile-numbers">
+        <ion-col col-6>
+          <p>Projects</p>
+          <span>{{team.projects}}</span>
+        </ion-col>
+        <ion-col col-6>
+          <p>Members</p>
+          <span>{{team.members}}</span>
+        </ion-col>
+      </ion-row>
+
+      <ion-row style="margin-bottom: 20px;">
+          <ion-col col-6>
+            <button ion-button  small  (click)="viewProjects()">View Projects</button>
+          </ion-col>
+          <ion-col col-6>
+              <button ion-button  small  (click)="viewProjects()">View Members</button>
+          </ion-col>
+        </ion-row>
+        <hr/>
+        <div class="listing-content">
+            <h4 class="categories-title">Team Members</h4>
+            <ion-scroll scrollX="true" class="horizontal-categories">
+              <ion-row class="categories-row">
+                <ion-col width-30 class="horizontal-item"  *ngFor="let member of members">
+                  <img style="border-radius: 50px" [src]="member.image" (click)="doProfile(member)">
+                  <!-- <preload-image [ratio]="{w:1, h:1}" [src]="member.image" title="member.title"></preload-image> -->
+                </ion-col>
+              </ion-row>
+            </ion-scroll>
+        </div>
+        
+    </div>
+  </ion-content>
+  

@@ -1,0 +1,67 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>{{profile.name}} Profile</ion-title>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content class="profile-content">
+    <div class="user-details">
+      <ion-row class="user-main-data-row">
+        <ion-col no-padding width-33>
+            <img style="border-radius: 100%" [src]="profile.image">
+        </ion-col>
+        <ion-col no-padding>
+          <ion-row class="social-presence-row">
+            <ion-col width-50 class="social-presence-item">
+              <a>
+                <h2 class="social-presence-value">{{noOfProjects}}</h2>
+                <h4 class="social-presence-title">Projects</h4>
+              </a>
+            </ion-col>
+            <ion-col width-50 class="social-presence-item">
+              <a>
+                <h2 class="social-presence-value">{{noOfTasks}}</h2>
+                <h4 class="social-presence-title">Tasks</h4>
+              </a>
+            </ion-col>
+          </ion-row>
+          <ion-row class="profile-action-row">
+              <ion-col no-padding>
+                <button ion-button block small (click)="goToProjects()">
+                 View Projects
+                </button>
+              </ion-col>
+            </ion-row>
+        </ion-col>
+      </ion-row>
+      <ion-row wrap class="user-bio-row">
+        <ion-col no-padding width-50>
+          <h2 class="user-name">{{profile.name}}</h2>
+        </ion-col>
+        <ion-col no-padding width-50>
+          <span (click)="doTeamPage()" class="user-location">{{profile.team}}</span>
+        </ion-col>
+        <ion-col no-padding width-100>
+          <p class="user-description">
+            {{profile.about}}
+          </p>
+        </ion-col>
+        <ion-col no-padding width-100>
+            <p class="user-website">
+              {{profile.role}}
+            </p>
+          </ion-col>
+        <ion-col no-padding width-100>
+            <p class="user-website">
+              {{profile.website}}
+            </p>
+          </ion-col>
+      </ion-row>
+     
+    </div>
+   
+  </ion-content>
+  

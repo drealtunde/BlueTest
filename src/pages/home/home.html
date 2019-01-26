@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="listing-content">
+    <background-image class="image-heading" [src]="headerImage">
+      <ion-row class="heading-row">
+        <ion-col no-padding offset-100>
+          <h2 class="main-title">Dashboard</h2>
+        </ion-col>
+      </ion-row>
+    </background-image>
+    <h4 class="categories-title">Projects</h4>
+    <ion-scroll scrollX="true" class="horizontal-categories">
+      <ion-row class="categories-row">
+        <ion-col width-15 class="horizontal-item">
+          <img src="../../assets/imgs/addProject.png" title="addProject" />
+        </ion-col>
+        <ion-col
+          width-15
+          class="horizontal-item"
+          *ngFor="let project of projects"
+        >
+          <img [src]="project.image" title="project.name" />
+        </ion-col>
+        <!-- <ion-col
+          width-25
+          class="horizontal-item"
+          *ngFor="let project of projects"
+        >
+          <img
+            style="width: 50px; height: 50px"
+            [src]="project.image"
+            (click)="openProject(project)"
+          />
+          
+        </ion-col> -->
+      </ion-row>
+    </ion-scroll>
+  </div>
+</ion-content>

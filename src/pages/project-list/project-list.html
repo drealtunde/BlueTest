@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar> <ion-title>Projects</ion-title> </ion-navbar>
+</ion-header>
+
+<ion-content class="list-mini-content">
+  <div class="list-mini">
+    <ion-list>
+      <button class="list-item" ion-item *ngFor="let project of projectList" (click)="openProject(project)">
+        <ion-row no-padding class="content-row one-line">
+          <!-- You can limit the rows of the description by using the class one-line. If you remove it, all the content from the row will be shown -->
+          <ion-col no-padding width-18 class="item-avatar">
+            <img style="border-radius: 6px" [src]="project.image" />
+          </ion-col>
+          <ion-col no-padding width-72 class="item-content">
+            <h3 class="item-title">{{ project.name }}</h3>
+            <p class="item-description">{{ project.description }}</p>
+          </ion-col>
+          <ion-col no-padding width-10 class="item-icon">
+            <ion-icon name="arrow-forward"></ion-icon>
+          </ion-col>
+        </ion-row>
+      </button>
+    </ion-list>
+  </div>
+</ion-content>

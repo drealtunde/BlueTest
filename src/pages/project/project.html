@@ -1,0 +1,108 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle><ion-icon name="menu"></ion-icon></button>
+    <ion-title>{{ project.name }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <div
+    id="profile-bg"
+    [ngStyle]="{ 'background-image': 'url(' + coverImage + ')' }"
+  ></div>
+  <div>
+    <div id="content">
+      <div id="profile-info" padding>
+        <img id="profile-image" [src]="project.image" />
+        <h3 id="profile-name">{{ project.name }}</h3>
+        <p>
+          {{ project.type }} &bull; {{ project.framework }} &bull;
+          {{ project.language }}
+        </p>
+        <p class="profile-description">{{ project.description }}</p>
+  
+      </div>
+      
+      <hr />
+    </div>
+  </div>
+ 
+  <ion-segment class="user-content-segment" [(ngModel)]="display">
+    <ion-segment-button value="allTasks">
+      All Tasks ({{ noOfTasks }})
+    </ion-segment-button>
+    <ion-segment-button value="myTasks">
+      Assigned Tasks ({{ myTasksCount }})
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="display" class="user-content">
+    <div  *ngSwitchCase="'allTasks'">
+        <accordion-list
+       
+        *ngFor="let task of project.task; let index = index"
+        [title]="task.taskName"
+        textColor="#FFF"
+        hasMargin="false"
+        headerColor="#1742b9"
+        
+      >
+        <p text-wrap>{{ task.taskDescription }}</p>
+        <hr>
+        <ion-list no-lines>
+          <ion-item>
+              <ion-icon name="person" color="primary" item-start></ion-icon>
+              <p style="font-weight: 400">Assigned To</p>
+              {{task.assignedTo}}
+          </ion-item>
+          <ion-item>
+            <ion-icon *ngIf="!task.completed" item-start name="alert" color="danger"></ion-icon>
+            <ion-icon *ngIf="task.completed" item-start name="checkmark-circle" color="secondary"></ion-icon>
+              <h4 *ngIf="task.completed">Completed</h4>
+              <h4 *ngIf="!task.completed">Not Completed</h4>
+          </ion-item>
+         
+      </ion-list>
+      </accordion-list>
+    </div>
+
+    <div  *ngSwitchCase="'myTasks'">
+        <accordion-list
+       
+        *ngFor="let task of myTasks; let index = index"
+        [title]="task.taskName"
+        textColor="#FFF"
+        hasMargin="false"
+        headerColor="#1742b9"
+      >
+      <div>
+        <ion-row>
+          <ion-col size="6"></ion-col>
+        </ion-row>
+      </div>
+        <p text-wrap>{{ task.taskDescription }}</p>
+        <hr>
+        <ion-list no-lines>
+          <ion-item>
+              <ion-icon name="person" color="primary" item-start></ion-icon>
+              <p>Assigned To</p>
+              {{task.assignedTo}}
+          </ion-item>
+          <ion-item>
+              <ion-icon *ngIf="!task.completed" item-start name="alert" color="danger"></ion-icon>
+              <ion-icon *ngIf="task.completed" item-start name="checkmark-circle" color="secondary"></ion-icon>
+              <h4 *ngIf="task.completed">Completed</h4>
+              <h4 *ngIf="!task.completed">Not Completed</h4>
+          </ion-item>
+         
+      </ion-list>
+      </accordion-list>
+      <div class="profile-info">
+        <p *ngIf="myTasks == 0" class="profile-description" > There is no assigned task.</p>
+      </div>
+      
+    </div>
+    
+
+  </div>
+</ion-content>

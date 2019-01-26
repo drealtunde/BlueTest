@@ -1,0 +1,8 @@
+ion-app.ios {
+	page-project {
+		.user-content-segment
+		{
+			@include segment-button-ios-styles();
+		}
+	}
+}
