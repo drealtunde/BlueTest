@@ -17,13 +17,14 @@
     <h4 class="categories-title">Projects</h4>
     <ion-scroll scrollX="true" class="horizontal-categories">
       <ion-row class="categories-row">
-        <ion-col width-15 class="horizontal-item">
+        <ion-col width-15 class="horizontal-item" (click)="addProject()">
           <img src="../../assets/imgs/addProject.png" title="addProject" />
         </ion-col>
         <ion-col
           width-15
           class="horizontal-item"
           *ngFor="let project of projects"
+          (click)="openProject(project)"
         >
           <img [src]="project.image" title="project.name" />
         </ion-col>
@@ -42,4 +43,23 @@
       </ion-row>
     </ion-scroll>
   </div>
+
+  <ion-card>
+      <ion-card-header >
+        <h3 style="color: #488aff;"> Summary </h3>
+      
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #halfDoughnutCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header >
+        <h3 style="color: #488aff;"> Current Tasks </h3>
+    </ion-card-header>
+    <ion-card-content>
+      <p>You currently do not have any tasks assigned to you</p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

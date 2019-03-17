@@ -26,7 +26,7 @@ export class MyProfilePage {
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.profile = ({
       role: "QA Team Lead",
-      image: `../../assets/imgs/avatar/girl-avatar.png`,
+      image: `../../assets/imgs/avatar/profile_picture.jpeg`,
       name: `Promise Okoh`,
       team: "Team Phantom",
       about:

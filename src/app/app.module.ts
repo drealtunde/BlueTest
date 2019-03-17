@@ -1,3 +1,4 @@
+import { AddProjectPage } from './../pages/add-project/add-project';
 import { AccordionListComponent } from './../components/accordion-list/accordion-list';
 import { ProjectPage } from './../pages/project/project';
 import { MyProfilePage } from './../pages/my-profile/my-profile';
@@ -27,6 +28,9 @@ import { ShowHideContainer } from './../components/show-hide-password/show-hide-
 import { ToastService } from '../providers/util/toast.service';
 import { BackgroundImage } from '../components/background-image/background-image';
 
+import { Crop } from "@ionic-native/crop/ngx";
+import { ImagePicker } from '@ionic-native/image-picker/ngx';
+
 
 @NgModule({
   declarations: [
@@ -42,6 +46,7 @@ import { BackgroundImage } from '../components/background-image/background-image
     ProjectListPage,
     MyProfilePage,
     ProjectPage,
+    AddProjectPage,
     //Components
     BackgroundImage,
     ShowHideContainer,
@@ -67,11 +72,14 @@ import { BackgroundImage } from '../components/background-image/background-image
     ProjectListPage,
     MyProfilePage,
     ProjectPage,
+    AddProjectPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     ToastService,
+    ImagePicker,
+    Crop,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]

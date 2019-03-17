@@ -1,0 +1,191 @@
+<!--
+  Generated template for the AddProjectPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar>
+    <ion-title>Add Project</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="forms-examples-content">
+  <ion-segment
+    class="forms-examples-segment"
+    [(ngModel)]="section"
+    
+  >
+    <ion-segment-button value="post" >
+      {{ "Details" }}
+    </ion-segment-button>
+    <ion-segment-button value="event" >
+      {{ "Tasks" }}
+    </ion-segment-button>
+    <ion-segment-button value="assign">
+      {{ "Assign Tasks" }}
+    </ion-segment-button>
+  </ion-segment>
+  <div [ngSwitch]="section" class="forms-wrapper">
+    <div *ngSwitchCase="'post'" class="post-example-view">
+      <form class="sample-form post-form" [formGroup]="post_form">
+        <section class="form-section">
+          <ion-item>
+            <ion-input
+              type="text"
+              placeholder="Name of project"
+              formControlName="title"
+            ></ion-input>
+          </ion-item>
+          <button
+            *ngIf="!selected_image"
+            ion-button
+            block
+            large
+            class="upload-image-button"
+            (click)="openImagePicker()"
+          >
+            <ion-icon name="camera"></ion-icon>
+            <h3 class="button-title">{{ "UPLOAD PROJECT ICON" }}</h3>
+          </button>
+          <preload-image
+            *ngIf="selected_image"
+            [ratio]="{ w: 1, h: 1 }"
+            [src]="selected_image"
+            alt="this is the image"
+            title="IMAGE!"
+          ></preload-image>
+        </section>
+        <ion-item>
+          <ion-textarea
+            rows="7"
+            placeholder="Write a description of project..."
+            formControlName="description"
+          ></ion-textarea>
+        </ion-item>
+        <section class="form-section">
+          <button
+            ion-button
+            block
+            icon-end
+            class="choose-category-button"
+            (click)="chooseCategory()"
+          >
+            Choose Project Tags
+            <ion-icon name="add"></ion-icon>
+          </button>
+        </section>
+
+        <section class="form-section">
+          <button
+            ion-button
+            block
+            class="form-action-button create-post-button"
+            (click)="next()"
+            [disabled]="!post_form.valid"
+          >
+            Next
+          </button>
+        </section>
+      </form>
+    </div>
+    <div *ngSwitchCase="'event'" class="post-example-view">
+      <form class="sample-form post-form">
+        <section id="taskPage" class="form-section">
+          <button
+            ion-button
+            block
+            icon-end
+            class="choose-category-button"
+            (click)="addTask()"
+          >
+            Add Task
+            <ion-icon name="add"></ion-icon>
+          </button>
+
+          <!-- <ion-list inset>
+                <ion-item *ngFor="let item of tasks">
+                  {{item}}
+                </ion-item>
+              </ion-list> -->
+
+          <ion-item *ngFor="let item of tasks; let i = index" name>
+            <ion-item>
+              <ion-input
+                type="text"
+                placeholder="Task title"
+                [(ngModel)]="tasks[i].title"
+                name="title {{i}}"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-textarea
+                rows="3"
+                placeholder="Write a description of the task"
+                [(ngModel)]="tasks[i].description"
+                name="description {{i}}"
+              ></ion-textarea>
+            </ion-item>
+          </ion-item>
+
+          <button
+            ion-button
+            block
+            class="form-action-button create-event-button"
+            (click)="next()"
+          >
+            Next
+          </button>
+        </section>
+        <ion-footer style="padding-bottom: 20px;">
+          <section class="form-section"></section>
+        </ion-footer>
+      </form>
+    </div>
+    <div *ngSwitchCase="'assign'" class="post-example-view">
+
+      <div style="padding: 16px">
+        <accordion-list
+          *ngFor="let task of tasks; let taskIndex = index"
+          [title]="task.title"
+          textColor="#FFF"
+          hasMargin="false"
+          headerColor="#1742b9"
+        >
+          <p text-wrap>{{ task.description }}</p>
+          <hr />
+          <form [formGroup]="checkboxTagsForm">
+            <ion-list formArrayName='member_id' class="checkbox-tags rounded-tags">
+                <ion-item
+                  *ngFor="let member of task.member; let memberIndex = index"
+                  class="checkbox-tag"
+                  [formGroupName]=member.memberIndex
+                >
+                  <ion-label>{{member.memberName}}</ion-label>
+                  <ion-checkbox
+                    formControlName="task_{{member.taskIndex}}member_{{ memberIndex}}"
+                    ionChange="assignMember()"
+                  ></ion-checkbox>
+                </ion-item>
+            </ion-list>
+          </form>
+        </accordion-list>
+      </div>
+      <div class="sample-form post-form">
+          <section class="form-section">
+              <button
+              ion-button
+              block
+              class="form-action-button create-post-button"
+              (click)="next()"
+            >
+              Next
+            </button>
+          </section>
+      </div>
+      
+      
+    </div>
+  </div>
+</ion-content>

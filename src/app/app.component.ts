@@ -10,6 +10,7 @@ import { Storage } from '@ionic/storage';
 
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
+import { ProjectListPage } from '../pages/project-list/project-list';
 
 @Component({
   templateUrl: 'app.html'
@@ -39,10 +40,9 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Home', component: HomePage, active: true, icon: 'home' },
-      { title: 'Login', component: LoginPage, active: false, icon: 'archive' },
       { title: 'Team', component: TeamPage, active: false, icon: 'body' },
       { title: 'Profile', component: MyProfilePage, active: false, icon: 'camera' },
-      { title: 'Projects', component: 'SideMenuPage', active: false, icon: 'bookmark' },
+      { title: 'Projects', component: ProjectListPage, active: false, icon: 'bookmark' },
     ];
 
     this.activePage = this.pages[0];
